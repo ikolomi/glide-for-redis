@@ -254,5 +254,7 @@ jobs:
             ### Warn of outdated attributions for PR ###
           - name: Warn of outdated attributions due to the PR
             if: ${{ env.FOUND_DIFF  == 'true' && github.event_name == 'pull_request' }}
-            run: |
-                echo "::warning::WARNING! Note the attribution files differ with this PR, make sure an updating PR is issued using scheduled or manual run of this workflow!"
+            uses: actions/github-script@v6
+            with:
+              script: |
+                core.warning('WARNING! Note the attribution files differ with this PR, make sure an updating PR is issued using scheduled or manual run of this workflow!');
