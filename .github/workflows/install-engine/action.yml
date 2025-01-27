@@ -45,6 +45,8 @@ runs:
               # check if the valkey repo is already cloned
               if [[ ! -d valkey ]]; then
                   git clone https://github.com/valkey-io/valkey.git
+                  cd valkey
+                  git checkout ${{ inputs.engine-version }}
               else
                   # check if the branch=version is already checked out
                   if [[ $(git branch --show-current) != ${{ inputs.engine-version }} ]]; then
