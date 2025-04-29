@@ -934,5 +934,6 @@ pub fn start_socket_listener<InitCallback>(init_callback: InitCallback)
 where
     InitCallback: FnOnce(Result<String, String>) + Send + Clone + 'static,
 {
+    log_info("listen_on_socket", "!start_socket_listener!");
     start_socket_listener_internal(init_callback, None);
 }
